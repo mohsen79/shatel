@@ -1,0 +1,19 @@
+.input {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: .3rem
+}
+
+.input label {
+    font-size: .7rem;
+}
+
+.input input {
+    border: 1px solid rgb(202, 202, 202);
+    outline: none;
+    background-color: transparent;
+    padding: .8rem;
+    border-radius: 5px;
+    color: black;
+}

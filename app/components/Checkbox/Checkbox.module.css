@@ -1,0 +1,12 @@
+.checkbox {
+    display: flex;
+    gap: .3rem;
+}
+
+.checkbox input {
+    padding: 1rem;
+    width: 20px;
+    height: 20px;
+    accent-color: red;
+    cursor: pointer;
+}
