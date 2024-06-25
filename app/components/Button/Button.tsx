@@ -1,12 +1,13 @@
 import React from 'react';
 
-const Button = ({ text, bgColor }: { text: string, bgColor: string }) => {
+const Button = ({ text, bgColor, textColor = 'white' }: { text: string, bgColor: string, textColor?: string }) => {
     const styles = {
         padding: "1rem",
         borderRadius: '5px',
         border: 'none',
         cursor: 'pointer',
-        backgroundColor: bgColor
+        backgroundColor: bgColor,
+        color: textColor
     }
 
     return (
