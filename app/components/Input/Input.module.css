@@ -17,3 +17,8 @@
     border-radius: 5px;
     color: black;
 }
+
+.hideIcon {
+    background: url("../../../public/assets/hide\ password.svg") no-repeat;
+    background-position: 97% 15px;
+}

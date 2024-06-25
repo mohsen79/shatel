@@ -6,6 +6,7 @@ import Button from '../components/Button/Button';
 import Image from 'next/image';
 import Carousel from '../../public/assets/Sign Up Image.png';
 import Link from 'next/link';
+import hide from '../../public/assets/hide\ password.svg';
 
 const Signup = () => {
     return (
@@ -15,7 +16,7 @@ const Signup = () => {
                     <h4>Fiber</h4>
                     <h2>Creat Your Fiber Account</h2>
                     <form>
-                        <Input label="Your Name" type="text" placeholder='John Doe' />
+                        <Input label="Your Name" placeholder='John Doe' />
                         <Input label="E-mail" type="email" placeholder='John@example.com' />
                         <Input label="Password" type="password" placeholder='At least 8 characters' />
                         <div className={styles.termCondition}>

@@ -3,15 +3,16 @@ import styles from './Input.module.css';
 
 interface Props {
     label: string,
-    type: string,
-    placeholder?: string
+    type?: string,
+    placeholder?: string,
 }
 
-const Input = ({ label, type, placeholder }: Props) => {
+const Input = ({ label, type = 'text', placeholder }: Props) => {
+
     return (
         <div className={styles.input}>
             <label><b>{label}</b></label>
-            <input type={type} placeholder={placeholder} />
+            <input className={label === 'Password' ? styles.hideIcon : ''} type={type} placeholder={placeholder} />
         </div>
     )
 }
