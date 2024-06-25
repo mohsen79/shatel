@@ -1,0 +1,43 @@
+.comments {
+    background-color: white;
+    color: black;
+    padding: 1rem;
+    padding-left: 10rem;
+}
+
+.comment {
+    width: 350px;
+    max-width: 450px;
+    padding: .5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    border-radius: 5px;
+    font-size: .8rem;
+    border: 2px solid rgb(218, 218, 218);
+}
+
+.comment .author {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.container {
+    display: flex;
+}
+
+@media screen and (max-width: 1024px) {
+    .comments {
+        padding: 3rem;
+    }
+    .container {
+        gap: 2rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        gap: 4rem;
+    }
+}

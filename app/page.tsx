@@ -1,3 +1,4 @@
+import Comments from './components/Comments/Comments'
 import Header from './components/layout/Header/Header'
 import TopSection from './components/layout/TopSection/TopSection'
 import WhyFiber from './components/layout/WhyFiber/WhyFiber'
@@ -9,6 +10,7 @@ export default function Home() {
       <Header />
       <TopSection />
       <WhyFiber />
+      <Comments />
     </main>
   )
 }
