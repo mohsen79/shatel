@@ -1,0 +1,36 @@
+.diversify {
+    width: 100%;
+    background-color: rgb(88, 88, 228);
+    display: flex;
+    border-radius: 10px;
+}
+
+.diversify img {
+    width: 50%;
+    height: 50%;
+    margin-top: 3rem;
+    margin-right: 3rem;
+}
+
+.diversify .info {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    padding: 0 3rem;
+    gap: 1rem;
+    color: white;
+}
+
+@media screen and (max-width: 1024px) {
+    .diversify {
+        flex-direction: column;
+        padding: 1rem;
+    }
+    .diversify img {
+        width: 100%;
+    }
+    .diversify .info {
+        padding: 0;
+    }
+}

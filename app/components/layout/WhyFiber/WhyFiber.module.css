@@ -1,0 +1,43 @@
+.whyFiber {
+    width: 100%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 10rem;
+    color: black;
+    gap: 2rem;
+}
+
+.whyFiber .title {
+    width: 40%;
+    display: grid;
+    gap: 1rem;
+}
+
+.title h4 {
+    color: rgb(88, 88, 228);
+}
+
+.title h2 {
+    width: 70%;
+}
+
+.fiberMerns {
+    display: flex;
+    gap: 3rem;
+}
+
+@media screen and (max-width: 1024px) {
+    .whyFiber {
+        padding: 1rem 3rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .whyFiber .title {
+        width: 80%;
+    }
+    .fiberMerns {
+        flex-direction: column;
+    }
+}
