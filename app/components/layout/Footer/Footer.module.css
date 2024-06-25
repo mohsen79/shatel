@@ -1,0 +1,41 @@
+.footer {
+    width: 100%;
+    color: black;
+    background-color: #fbf8f3;
+    padding: 2rem 3rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.aboutFiber {
+    width: 40%;
+    display: grid;
+    gap: 1rem;
+}
+
+.footerItems {
+    display: grid;
+    gap: .5rem;
+    width: 20%;
+    background-color: red;
+}
+
+@media screen and (max-width: 1024px) {
+    .footer {
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+    .aboutFiber {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .footer {
+        flex-direction: column;
+        flex-wrap: nowrap;
+    }
+    .footerItems {
+        width: 100%;
+    }
+}
