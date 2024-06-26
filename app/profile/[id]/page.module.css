@@ -1,0 +1,27 @@
+.profile {
+    width: 100vw;
+    height: 100vh;
+    background-color: #fbf8f3;
+    display: flex;
+    justify-content: center;
+    color: black;
+}
+
+.profile .container {
+    width: 50%;
+    height: 60%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.container .profileBg {
+    width: 100%;
+    height: 70%;
+}
+
+.container .userPhoto {
+    margin-top: -3.5rem;
+}
