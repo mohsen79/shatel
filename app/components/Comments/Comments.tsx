@@ -9,12 +9,8 @@ import userPhoto2 from '../../../public/assets/User Avatar 2.svg'
 import userPhoto3 from '../../../public/assets/User Avatar 32.svg'
 import Button from "../Button/Button";
 import Link from "next/link";
-// import { useRouter } from "next/navigation";
-import { useRouter } from "next/compat/router";
 
 const Comments = () => {
-    const router = useRouter();
-    console.log(router);
 
     const users = [
         { photo: userPhoto, username: 'Sarah Andrews', revenue: 100, description: 'lorem' },
@@ -58,7 +54,13 @@ const Comments = () => {
                         Lorem ipsum dolor sit amet consectetur ads quaerat optio, quo obcaecati, quis ipsum.
                     </p>
                     <Link
-                        href='/profile/1'
+                        href={{
+                            pathname: '/profile',
+                            query: {
+                                name: user.username, revenue: user.revenue,
+                                photo: JSON.stringify(user.photo)
+                            }
+                        }}
                     >
                         <Button border="2px solid rgb(218, 218, 218)" text={`View ${user.username} protfolio`} bgColor="white" textColor="rgb(88, 88, 228)" />
                     </Link>

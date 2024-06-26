@@ -24,4 +24,5 @@
 
 .container .userPhoto {
     margin-top: -3.5rem;
+    border-radius: 50%;
 }
