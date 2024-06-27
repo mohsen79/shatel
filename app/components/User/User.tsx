@@ -13,7 +13,7 @@ const User = () => {
     <div className={styles.auth}>
       {
         status === 'unauthenticated' ?
-          <Link href="/api/auth/signin">
+          <Link href="/signup">
             <Button text='Sign in' bgColor='white' textColor='black' />
             <Button text='Sign up' bgColor='rgb(88, 88, 228)' />
           </Link> :

@@ -12,6 +12,7 @@
     "@fortawesome/fontawesome-svg-core": "^6.5.2",
     "@fortawesome/free-solid-svg-icons": "^6.5.2",
     "@fortawesome/react-fontawesome": "^0.2.2",
+    "@hookform/resolvers": "^3.6.0",
     "@next/font": "^14.2.4",
     "@types/node": "20.14.8",
     "@types/react": "18.3.3",
@@ -23,6 +24,7 @@
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "react-multi-carousel": "^2.8.5",
-    "typescript": "5.5.2"
+    "typescript": "5.5.2",
+    "zod": "^3.23.8"
   }
 }

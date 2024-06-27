@@ -29,6 +29,11 @@
     gap: 1.5rem;
 }
 
+.authForm .errorMsg {
+    color: red;
+    font-size: .7rem;
+}
+
 .authForm span {
     text-align: center;
 }
