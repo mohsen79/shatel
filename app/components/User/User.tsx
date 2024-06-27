@@ -3,11 +3,12 @@ import React from 'react';
 import styles from '../layout/Header/Header.module.css';
 import Link from 'next/link';
 import Button from '../Button/Button';
+import SkeletonLoading from './SkeletonLoading';
 
 const User = () => {
   const { status, data: session } = useSession();
 
-  if (status === 'loading') return null;
+  if (status === 'loading') return <SkeletonLoading />;
 
   return (
     <div className={styles.auth}>
