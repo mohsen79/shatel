@@ -1,6 +1,6 @@
 import React, { MouseEventHandler } from 'react';
 
-const Button = ({ text, bgColor, textColor = 'white', border = 'none' }: { text: string, bgColor: string, textColor?: string, border?: string }) => {
+const Button = ({ text, bgColor, textColor = 'white', border = 'none', onClick }: { text: string, bgColor: string, textColor?: string, border?: string, onClick?: MouseEventHandler }) => {
     const styles = {
         padding: "1rem",
         borderRadius: '5px',
@@ -13,7 +13,7 @@ const Button = ({ text, bgColor, textColor = 'white', border = 'none' }: { text:
     }
 
     return (
-        <button style={styles}>{text}</button>
+        <button onClick={onClick} style={styles}>{text}</button>
     )
 }
 

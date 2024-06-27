@@ -17,6 +17,17 @@
     list-style-type: none;
 }
 
+.signedIn {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.signedIn button:hover {
+    color: red !important;
+    transition: all .3s ease-in-out;
+}
+
 @media screen and (max-width: 1024px) {
     .header {
         font-size: .7rem;
