@@ -13,6 +13,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { signupValidationScheam } from '../schema/signupValidation';
 import { useForm } from 'react-hook-form';
+import { faEye } from '@fortawesome/free-solid-svg-icons';
 
 type IssueForm = z.infer<typeof signupValidationScheam>;
 
@@ -55,7 +56,7 @@ const Signup = () => {
                             <p className={styles.errorMsg}>{errors.email?.message}</p>
                         </div>
                         <div>
-                            <Input label="Password" type="password" placeholder='At least 8 characters' error={register('password')} />
+                            <Input icon={faEye} label="Password" type="password" placeholder='At least 8 characters' error={register('password')} />
                             <p className={styles.errorMsg}>{errors.password?.message}</p>
                         </div>
                         <div className={styles.termCondition}>
