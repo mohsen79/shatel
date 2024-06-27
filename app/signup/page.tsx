@@ -43,7 +43,7 @@ const Signup = () => {
         <div className={styles.signup}>
             <section className={styles.inputSection}>
                 <div className={styles.authForm}>
-                    <h4>Fiber</h4>
+                    <h4><Link href="/">Fiber</Link></h4>
                     <h2>Creat Your Fiber Account</h2>
                     <form
                         onSubmit={handleSubmit((data) => registerUser(data))}>
