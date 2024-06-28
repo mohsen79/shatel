@@ -9,8 +9,27 @@ import userPhoto2 from '../../../public/assets/User Avatar 2.svg'
 import userPhoto3 from '../../../public/assets/User Avatar 32.svg'
 import Button from "../Button/Button";
 import Link from "next/link";
+import NewComment from "./NewComment";
+import { useEffect, useState } from "react";
+import CommentSkeletonLoading from "./CommentSkeletonLoading";
+import Cookies from 'js-cookie';
 
 const Comments = () => {
+    const [modalStatus, setModalStatus] = useState(false);
+    const [comments, setComments] = useState([]);
+    const [auth, setAuth] = useState(false);
+
+    useEffect(() => {
+        Cookies.get('loggedUser') && setAuth(true);
+
+        const fetchComments = async () => {
+            const res = await fetch('api/comment');
+            const data = await res.json();
+            setComments(data.reverse());
+        }
+
+        fetchComments();
+    }, [modalStatus]);
 
     const users = [
         { photo: userPhoto, username: 'Sarah Andrews', revenue: 100, description: 'lorem' },
@@ -18,6 +37,15 @@ const Comments = () => {
         { photo: userPhoto3, username: 'Janice Dave', revenue: 30, description: 'lorem' },
         { photo: userPhoto, username: 'Sarah Andrews', revenue: 100, description: 'lorem' },
         { photo: userPhoto2, username: 'Mathews Higgins', revenue: 20, description: 'lorem' },
+        { photo: userPhoto3, username: 'Janice Dave', revenue: 30, description: 'lorem' },
+        { photo: userPhoto3, username: 'Janice Dave', revenue: 30, description: 'lorem' },
+        { photo: userPhoto3, username: 'Janice Dave', revenue: 30, description: 'lorem' },
+        { photo: userPhoto3, username: 'Janice Dave', revenue: 30, description: 'lorem' },
+        { photo: userPhoto3, username: 'Janice Dave', revenue: 30, description: 'lorem' },
+        { photo: userPhoto3, username: 'Janice Dave', revenue: 30, description: 'lorem' },
+        { photo: userPhoto3, username: 'Janice Dave', revenue: 30, description: 'lorem' },
+        { photo: userPhoto3, username: 'Janice Dave', revenue: 30, description: 'lorem' },
+        { photo: userPhoto3, username: 'Janice Dave', revenue: 30, description: 'lorem' },
         { photo: userPhoto3, username: 'Janice Dave', revenue: 30, description: 'lorem' },
     ]
     const responsive = {
@@ -39,35 +67,42 @@ const Comments = () => {
         }
     };
 
+    const modal = () => {
+        setModalStatus(!modalStatus);
+    }
+
     return <div className={styles.comments}>
-        <Carousel responsive={responsive} arrows={false} sliderClass={styles.container}>
-            {users.map((user, index) =>
-                <div key={index} className={styles.comment}>
-                    <div className={styles.author}>
-                        <Image src={user.photo} alt="user porfile photo" />
-                        <div className={styles.info}>
-                            <h4>{user.username}</h4>
-                            <div>${user.revenue}k in revenue</div>
+        {modalStatus && <NewComment modalStatus={modalStatus} handleModal={modal} />}
+        {auth && <Button text="add new comment" width="10%" bgColor="rgb(88, 88, 228)" onClick={modal} />}
+        {!comments.length ? <CommentSkeletonLoading /> :
+            <Carousel responsive={responsive} arrows={false} sliderClass={styles.container}>
+                {comments.map((comment, index) =>
+                    <div key={index} className={styles.comment}>
+                        <div className={styles.author}>
+                            <Image src={users[index].photo} alt="user porfile photo" />
+                            <div className={styles.info}>
+                                <h4>{comment.user_id}</h4>
+                                <div>$100k in revenue</div>
+                            </div>
                         </div>
+                        <p className={styles.message}>
+                            {comment.content}
+                        </p>
+                        <Link
+                            href={{
+                                pathname: '/profile',
+                                query: {
+                                    name: comment.user_id,
+                                    photo: JSON.stringify(users[index].photo)
+                                }
+                            }}
+                        >
+                            <Button border="2px solid rgb(218, 218, 218)" text={`View user ${comment.user_id} protfolio`} bgColor="white" textColor="rgb(88, 88, 228)" />
+                        </Link>
                     </div>
-                    <p className={styles.message}>
-                        Lorem ipsum dolor sit amet consectetur ads quaerat optio, quo obcaecati, quis ipsum.
-                    </p>
-                    <Link
-                        href={{
-                            pathname: '/profile',
-                            query: {
-                                name: user.username, revenue: user.revenue,
-                                photo: JSON.stringify(user.photo)
-                            }
-                        }}
-                    >
-                        <Button border="2px solid rgb(218, 218, 218)" text={`View ${user.username} protfolio`} bgColor="white" textColor="rgb(88, 88, 228)" />
-                    </Link>
-                </div>
-            )}
-        </Carousel >
-    </div >
+                )}
+            </Carousel>}
+    </div>
 
 }
 

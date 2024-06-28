@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import styles from '../layout/Header/Header.module.css';
 import Link from 'next/link';
 import Button from '../Button/Button';
-import SkeletonLoading from './SkeletonLoading';
+import SkeletonLoading from './AuthSkeletonLoading';
 import Cookies from 'js-cookie';
 
 const User = () => {

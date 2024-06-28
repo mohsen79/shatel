@@ -2,7 +2,7 @@ import React from 'react';
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css';
 
-const SkeletonLoading = () => {
+const AuthSkeletonLoading = () => {
     return (
         <div style={{ display: 'flex' }}>
             <Skeleton height={50} width={90} />
@@ -11,4 +11,4 @@ const SkeletonLoading = () => {
     )
 }
 
-export default SkeletonLoading;
+export default AuthSkeletonLoading;
