@@ -13,7 +13,7 @@ const Profile = () => {
         <section className={styles.profile}>
             <div className={styles.container}>
                 <Image src={office} alt="office" className={styles.profileBg} />
-                <Image src={JSON.parse(params.get('photo'))?.src} alt="user photo" width={150} height={150}
+                <Image src={JSON.parse(params.get('photo') as string)?.src} alt="user photo" width={150} height={150}
                     className={styles.userPhoto} />
                 <h3>{params.get('name')}</h3>
                 <p>${params.get('revenue') || 0}k in revenue</p>

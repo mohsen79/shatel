@@ -6,18 +6,23 @@ import Button from '../Button/Button';
 import SkeletonLoading from './AuthSkeletonLoading';
 import Cookies from 'js-cookie';
 
+interface loggedUserSchema {
+  username: string,
+  photo: string
+}
+
 const User = () => {
   const { status, data: session } = useSession();
-  const [loggedUser, setLoggedUser] = useState(null);
+  const [loggedUser, setLoggedUser] = useState<loggedUserSchema>();
 
   useEffect(() => {
-    Cookies.get('loggedUser') && setLoggedUser(JSON.parse(Cookies.get('loggedUser')));
+    Cookies.get('loggedUser') && setLoggedUser(JSON.parse(Cookies.get('loggedUser') as string));
   }, [session]);
 
   const signoutUser = () => {
     signOut({ callbackUrl: '/' });
     Cookies.remove('loggedUser');
-    setLoggedUser(null);
+    setLoggedUser({ username: '', photo: '' });
   }
 
   if (status === 'loading') return <SkeletonLoading />;
