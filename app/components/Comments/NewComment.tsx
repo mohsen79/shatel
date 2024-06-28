@@ -7,6 +7,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { commentSchema } from '@/app/schema/commentSchema';
 import { z } from 'zod';
 import { useForm } from 'react-hook-form';
+import Cookies from 'js-cookie';
 
 interface Props {
     modalStatus: boolean,
@@ -20,10 +21,12 @@ const NewComment = ({ modalStatus, handleModal }: Props) => {
     });
 
     const sendComment = async (data: object) => {
+        const loggedUser = JSON.parse(Cookies.get('loggedUser'));
+        const newData = { ...data, author: loggedUser.username };
         try {
             await fetch('api/comment', {
                 method: 'POST',
-                body: JSON.stringify(data)
+                body: JSON.stringify(newData)
             });
 
             handleModal();

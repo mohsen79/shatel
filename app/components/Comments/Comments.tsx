@@ -16,12 +16,12 @@ import Cookies from 'js-cookie';
 
 const Comments = () => {
     const [modalStatus, setModalStatus] = useState(false);
-    const [comments, setComments] = useState([]);
+    const [comments, setComments] = useState(null);
     const [auth, setAuth] = useState(false);
 
-    useEffect(() => {
-        Cookies.get('loggedUser') && setAuth(true);
+    useEffect(() => Cookies.get('loggedUser') ? setAuth(true) : setAuth(false));
 
+    useEffect(() => {
         const fetchComments = async () => {
             const res = await fetch('api/comment');
             const data = await res.json();
@@ -74,14 +74,14 @@ const Comments = () => {
     return <div className={styles.comments}>
         {modalStatus && <NewComment modalStatus={modalStatus} handleModal={modal} />}
         {auth && <Button text="add new comment" width="10%" bgColor="rgb(88, 88, 228)" onClick={modal} />}
-        {!comments.length ? <CommentSkeletonLoading /> :
+        {comments === null ? <CommentSkeletonLoading /> :
             <Carousel responsive={responsive} arrows={false} sliderClass={styles.container}>
                 {comments.map((comment, index) =>
                     <div key={index} className={styles.comment}>
                         <div className={styles.author}>
                             <Image src={users[index].photo} alt="user porfile photo" />
                             <div className={styles.info}>
-                                <h4>{comment.user_id}</h4>
+                                <h4>{comment.author}</h4>
                                 <div>$100k in revenue</div>
                             </div>
                         </div>
@@ -97,7 +97,7 @@ const Comments = () => {
                                 }
                             }}
                         >
-                            <Button border="2px solid rgb(218, 218, 218)" text={`View user ${comment.user_id} protfolio`} bgColor="white" textColor="rgb(88, 88, 228)" />
+                            <Button border="2px solid rgb(218, 218, 218)" text={`View user ${comment.author} protfolio`} bgColor="white" textColor="rgb(88, 88, 228)" />
                         </Link>
                     </div>
                 )}
