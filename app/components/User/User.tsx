@@ -1,9 +1,10 @@
 import { signOut, useSession } from 'next-auth/react';
-import React from 'react';
+import React, { useState } from 'react';
 import styles from '../layout/Header/Header.module.css';
 import Link from 'next/link';
 import Button from '../Button/Button';
 import SkeletonLoading from './SkeletonLoading';
+import Cookies from 'js-cookie';
 
 const User = () => {
   const { status, data: session } = useSession();

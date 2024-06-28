@@ -1,34 +1,37 @@
-import React, { useRef } from 'react';
+import React, { useState } from 'react';
 import styles from './Input.module.css';
 import { UseFormRegisterReturn } from 'react-hook-form';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
+
 interface Props {
-    label: string,
+    label?: string,
     type?: string,
     placeholder?: string,
-    error: UseFormRegisterReturn,
     icon?: IconProp
+    error?: UseFormRegisterReturn,
 }
 
-const Input = ({ label, type = 'text', placeholder, error, icon }: Props) => {
-    const inputRef = useRef<HTMLInputElement>(null);
+const Input = ({ label, type = 'text', placeholder, icon, error }: Props) => {
+    const [inputType, setInputType] = useState(type);
 
     const showPassword = () => {
-        if (inputRef.current) {
-            inputRef.current.type = inputRef.current.type === 'text' ? 'password' : 'text';
-        }
+        inputType === 'text' ? setInputType('password') : setInputType('text');
     }
 
     return (
         <div className={styles.inputBox}>
             <label><b>{label}</b></label>
             <div className={styles.input}>
-                <input {...error}
-                    ref={inputRef}
-                    type={type} placeholder={placeholder} />
-                {icon?.iconName === 'eye' && <FontAwesomeIcon onClick={showPassword} className={styles.icon} width={20} icon={icon} />}
+                <input
+                    {...error}
+                    type={inputType} placeholder={placeholder}
+                />
+                {icon?.iconName === 'eye' &&
+                    <FontAwesomeIcon onClick={showPassword}
+                        className={styles.icon} width={20} icon={icon}
+                    />}
             </div>
         </div>
     )

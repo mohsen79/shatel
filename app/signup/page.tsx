@@ -24,7 +24,6 @@ const Signup = () => {
     });
 
     const registerUser = async (data: object) => {
-        console.log('register');
         try {
             const res = await fetch('api/auth/register', {
                 method: "POST",
