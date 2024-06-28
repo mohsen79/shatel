@@ -28,9 +28,9 @@ const Input = ({ label, type = 'text', placeholder, icon, error }: Props) => {
                     {...error}
                     type={inputType} placeholder={placeholder}
                 />
-                {icon?.iconName === 'eye' &&
+                {icon &&
                     <FontAwesomeIcon onClick={showPassword}
-                        className={styles.icon} width={20} icon={icon}
+                        className={styles.icon} width={20} icon={icon as IconProp}
                     />}
             </div>
         </div>

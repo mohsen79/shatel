@@ -21,7 +21,7 @@ const NewComment = ({ modalStatus, handleModal }: Props) => {
     });
 
     const sendComment = async (data: object) => {
-        const loggedUser = JSON.parse(Cookies.get('loggedUser'));
+        const loggedUser = JSON.parse(Cookies.get('loggedUser') as string);
         const newData = { ...data, author: loggedUser.username };
         try {
             await fetch('api/comment', {

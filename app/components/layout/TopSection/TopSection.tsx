@@ -12,7 +12,7 @@ const TopSection = () => {
     <section className={styles.topSection}>
       <div className={styles.info}>
         <div className={styles.rate}>
-          {[1, 2, 3, 4, 5].map(() => <FontAwesomeIcon icon={faStar} width={30} height={30} color='orange' />)}
+          {[1, 2, 3, 4, 5].map((index) => <FontAwesomeIcon key={index} icon={faStar} width={30} height={30} color='orange' />)}
           <p>Rated 4.8/5 (243 reviews)</p>
         </div>
         <h2><b>Create your portfolio in minutes.</b></h2>

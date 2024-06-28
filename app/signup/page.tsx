@@ -14,6 +14,7 @@ import { z } from 'zod';
 import { signupValidationScheam } from '../schema/signupValidation';
 import { useForm } from 'react-hook-form';
 import { faEye } from '@fortawesome/free-solid-svg-icons';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 type IssueForm = z.infer<typeof signupValidationScheam>;
 
@@ -22,6 +23,8 @@ const Signup = () => {
     const { register, handleSubmit, formState: { errors } } = useForm<IssueForm>({
         resolver: zodResolver(signupValidationScheam)
     });
+
+    const customIcon = faEye as IconProp;
 
     const registerUser = async (data: object) => {
         try {
