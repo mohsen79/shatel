@@ -14,9 +14,16 @@ import { useEffect, useState } from "react";
 import CommentSkeletonLoading from "./CommentSkeletonLoading";
 import Cookies from 'js-cookie';
 
+interface commentSchema {
+    author: string,
+    content: string,
+    user_id: number
+}
+
 const Comments = () => {
     const [modalStatus, setModalStatus] = useState(false);
-    const [comments, setComments] = useState(null);
+    const [skeletonLoading, setSkeletonLoading] = useState(true);
+    const [comments, setComments] = useState([]);
     const [auth, setAuth] = useState(false);
 
     useEffect(() => Cookies.get('loggedUser') ? setAuth(true) : setAuth(false));
@@ -26,6 +33,7 @@ const Comments = () => {
             const res = await fetch('api/comment');
             const data = await res.json();
             setComments(data.reverse());
+            setSkeletonLoading(false);
         }
 
         fetchComments();
@@ -74,9 +82,9 @@ const Comments = () => {
     return <div className={styles.comments}>
         {modalStatus && <NewComment modalStatus={modalStatus} handleModal={modal} />}
         {auth && <Button text="add new comment" width="10%" bgColor="rgb(88, 88, 228)" onClick={modal} />}
-        {comments === null ? <CommentSkeletonLoading /> :
+        {skeletonLoading ? <CommentSkeletonLoading /> :
             <Carousel responsive={responsive} arrows={false} sliderClass={styles.container}>
-                {comments.map((comment, index) =>
+                {comments.map((comment: commentSchema, index: number) =>
                     <div key={index} className={styles.comment}>
                         <div className={styles.author}>
                             <Image src={users[index].photo} alt="user porfile photo" />

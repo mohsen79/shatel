@@ -10,7 +10,7 @@ const authOptions = {
         }),
     ],
     callbacks: {
-        session: async (session) => {
+        session: async (session: any) => {
             const cookie = cookies();
 
             const newUser = {
@@ -27,7 +27,7 @@ const authOptions = {
                 expires: new Date(Date.now() + 60 * 60 * 24 * 365 * 1000),
             });
 
-            return 'ok';
+            return session;
         }
     }
 }
